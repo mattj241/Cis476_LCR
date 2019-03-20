@@ -14,21 +14,24 @@ namespace LengthConversionProgram
     {
         string[] units = { "Mile", "Yard", "Foot" };
 
-        private ConversionHandler mileHandler = new MileHandler();
-        private ConversionHandler yardHandler = new YardHandler();
-        private ConversionHandler footHandler = new FootHandler();
+        private ConversionHandler mileHandler;
+        private ConversionHandler yardHandler;
+        private ConversionHandler footHandler;
+        private ConversionRequest conversionRequest;
 
         public Client()
         {
             InitializeComponent();
             Spinner.Items.AddRange(units);
+            mileHandler = new MileHandler();
+            yardHandler = new YardHandler();
+            footHandler = new FootHandler();
             mileHandler.SetSuccessor(yardHandler);
             yardHandler.SetSuccessor(footHandler);
         }
 
         private void ConverBtn_Click(object sender, EventArgs e)
         {
-            ConversionRequest conversionRequest;
             bool isGoodParse = Double.TryParse(kiloTextBox.Text, out double input);
             if (!isGoodParse)
             {
