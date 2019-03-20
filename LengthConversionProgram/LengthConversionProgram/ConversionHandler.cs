@@ -5,18 +5,17 @@
 //  Created on:      19-Mar-2019 7:18:07 PM
 ///////////////////////////////////////////////////////////
 
-
-
-
-public abstract class ConversionHandler {
-
-	protected ConversionHandler successor;
-
-	public abstract double HandleConversion(string unitRequested, double figure);
-
-	public void SetSuccessor(ConversionHandler unit)
+namespace LengthConversionProgram
+{
+    public abstract class ConversionHandler
     {
-        this.successor = unit;
-	}
+        protected ConversionHandler successor;
 
+        public abstract void HandleConversion(string unitRequested, ConversionRequest currentRequest);
+
+        public void SetSuccessor(ConversionHandler unit)
+        {
+            this.successor = unit;
+        }
+    }
 }

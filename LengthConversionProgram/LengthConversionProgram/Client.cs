@@ -28,6 +28,7 @@ namespace LengthConversionProgram
 
         private void ConverBtn_Click(object sender, EventArgs e)
         {
+            ConversionRequest conversionRequest;
             bool isGoodParse = Double.TryParse(kiloTextBox.Text, out double input);
             if (!isGoodParse)
             {
@@ -35,8 +36,9 @@ namespace LengthConversionProgram
             }
             else
             {
-                double output = mileHandler.HandleConversion(Spinner.Text, input);
-                SolutionBox.Text = output.ToString();
+                conversionRequest = new ConversionRequest(input);
+                mileHandler.HandleConversion(Spinner.Text, conversionRequest);
+                SolutionBox.Text = conversionRequest.Output.ToString();
             }
         }
     }

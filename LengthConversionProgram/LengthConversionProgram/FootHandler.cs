@@ -6,21 +6,27 @@
 ///////////////////////////////////////////////////////////
 
 
-
-
-public class FootHandler : ConversionHandler
+namespace LengthConversionProgram
 {
 
-	public override double HandleConversion(string unitRequested, double figure)
+    public class FootHandler : ConversionHandler
     {
-        if (unitRequested == "Foot")
-        {
-            return figure * 3280.84;
-        }
-        else
-        {
-            return successor.HandleConversion(unitRequested, figure);
-        }
-    }
 
+        public override void HandleConversion(string unitRequested, ConversionRequest currentRequest)
+        {
+            //if (unitRequested == "Foot")
+            //{
+            //    return figure * 3280.84;
+            //}
+            if (unitRequested == "Foot")
+            {
+                currentRequest.Output = currentRequest.Input * 3280.84;
+            }
+            else
+            {
+                successor.HandleConversion(unitRequested, currentRequest);
+            }
+        }
+
+    }
 }

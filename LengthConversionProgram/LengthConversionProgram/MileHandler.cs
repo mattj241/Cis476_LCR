@@ -6,21 +6,22 @@
 ///////////////////////////////////////////////////////////
 
 
-
-
-public class MileHandler : ConversionHandler
+namespace LengthConversionProgram
 {
-
-	public override double HandleConversion(string unitRequested, double figure)
+    public class MileHandler : ConversionHandler
     {
-        if (unitRequested == "Mile")
-        {
-            return figure * 0.621371;
-        }
-        else
-        {
-            return successor.HandleConversion(unitRequested, figure);
-        }
-	}
 
+        public override void HandleConversion(string unitRequested, ConversionRequest currentRequest)
+        {
+            if (unitRequested == "Mile")
+            {
+                currentRequest.Output = currentRequest.Input * 0.621371;
+            }
+            else
+            {
+                successor.HandleConversion(unitRequested, currentRequest);
+            }
+        }
+
+    }
 }

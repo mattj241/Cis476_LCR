@@ -6,21 +6,23 @@
 ///////////////////////////////////////////////////////////
 
 
-
-
-public class YardHandler : ConversionHandler
+namespace LengthConversionProgram
 {
 
-	public override double HandleConversion(string unitRequested, double figure)
+    public class YardHandler : ConversionHandler
     {
-        if (unitRequested == "Yard")
-        {
-            return figure * 1093.61;
-        }
-        else
-        {
-            return successor.HandleConversion(unitRequested, figure);
-        }
-    }
 
+        public override void HandleConversion(string unitRequested, ConversionRequest currentRequest)
+        {
+            if (unitRequested == "Yard")
+            {
+                currentRequest.Output = currentRequest.Input * 1093.61;
+            }
+            else
+            {
+                successor.HandleConversion(unitRequested, currentRequest);
+            }
+        }
+
+    }
 }

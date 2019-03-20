@@ -52,6 +52,7 @@
       <DependentUpon>Client.cs</DependentUpon>
     </Compile>
     <Compile Include="ConversionHandler.cs" />
+    <Compile Include="ConversionRequest.cs" />
     <Compile Include="FootHandler.cs" />
     <Compile Include="MileHandler.cs" />
     <Compile Include="Program.cs" />
